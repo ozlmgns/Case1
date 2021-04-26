@@ -1,5 +1,7 @@
 
 
+CASE1     <br/>
+
 **1.1 Sanal makinada bir Centos kurup, güncellemelerin yapılması** <br/>
  [VirtualBox](https://www.virtualbox.org/wiki/Downloads)    <br/>
  [CentOS-7](http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso)
@@ -32,5 +34,24 @@ Artık kalıcı hale geldi.  <br/>
 `sudo cat bootcamp.txt  `<br/>
 
 **1.5 Kişisel kullanıcının home dizininde tek bir komut kullanarak bootcamp.txt file'ını bulup, bootcamp diskine taşıması** <br/>
-
 `sudo find /home -type f -name "bootcamp.txt" -exec mv {} /opt/bootcamp`  <br/>
+
+CASE2   <br/>
+ **2.1. DB kullanan bir uygulamayı dockerized edip, nginx üzerinden serve edilmesi**  <br/>
+
+**Kurulumlar** <br/>
+Önce repository güncelleme komutlarını çalıştırıyoruz. <br/>
+`sudo yum -y update`  <br/>
+`sudo yum -y install epel-release` <br/>
+Ansible paketini kuruyoruz.  <br/>
+`sudo yum -y install ansible`  <br/>
+`ansible --version`  <br/>
+ `sudo cat install_docker.yml`<br/>
+
+![image](https://user-images.githubusercontent.com/66086595/116007840-5af07280-a61a-11eb-9f75-c3be1168d7b2.png)<br/>
+`ansible-playbook install_docker.yml`<br/>
+Ardından docker'ın doğru bir şekilde kurulup kurulmadığını kontrol etmek için;<br/>
+`systemctl status docker`<br/>
+Nginx paketini kuruyoruz.<br/>
+`sudo yum install nginx`<br/>
+`sudo systemctl enable nginx`<br/>
